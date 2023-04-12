@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccu7ngywev8bs"]
+
+[ext_resource type="Script" path="res://Scenes/Player/PlayerScript.gd" id="1_cqfli"]
+[ext_resource type="AudioStream" uid="uid://bow2ejwgpb0gr" path="res://Assets/fast-simple-chop-5-6270.mp3" id="2_y168m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_obgag"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_botqs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_udt8x"]
+albedo_color = Color(0.32549, 0, 0.686275, 1)
+emission_enabled = true
+emission = Color(0.32549, 0, 0.686275, 1)
+emission_energy_multiplier = 2.9
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_cqfli")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+visible = false
+shape = SubResource("BoxShape3D_obgag")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_botqs")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+material = SubResource("StandardMaterial3D_udt8x")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_y168m")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://q14e8v352cd0"]
+
+[ext_resource type="Script" path="res://Scenes/Plane/PlaneScript.gd" id="1_h6tks"]
+
+[node name="Plane" type="Node3D"]
+script = ExtResource("1_h6tks")
+metadata/tag = "plane"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.981702, 0, 0, 0, 0.981702, 0, 0, 0, 0.981702, 0, 0, 0)
+use_collision = true
+size = Vector3(2, 0.2, 2)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

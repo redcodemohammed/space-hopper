@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://iy8hyu5kklq"]
+
+[sub_resource type="Theme" id="Theme_por3q"]
+default_font_size = 50
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+clip_contents = false
+custom_minimum_size = Vector2(93, 0)
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 133.0
+offset_bottom = 80.0
+text = "SCORE: 0"
+fit_content = true
+autowrap_mode = 0
+
+[node name="YouLostLabel" type="RichTextLabel" parent="."]
+clip_contents = false
+custom_minimum_size = Vector2(93, 0)
+layout_mode = 0
+offset_left = 250.0
+offset_top = 250.0
+offset_right = 345.0
+offset_bottom = 290.0
+theme = SubResource("Theme_por3q")
+fit_content = true
+autowrap_mode = 0

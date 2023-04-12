@@ -1,0 +1,64 @@
+[gd_scene load_steps=12 format=3 uid="uid://bbhquapi2v424"]
+
+[ext_resource type="Script" path="res://Levels/Level_1Script.gd" id="1_61ckl"]
+[ext_resource type="PackedScene" uid="uid://q14e8v352cd0" path="res://Scenes/Plane/Plane.tscn" id="1_dew4i"]
+[ext_resource type="PackedScene" uid="uid://ccu7ngywev8bs" path="res://Scenes/Player/Player.tscn" id="2_xde2s"]
+[ext_resource type="PackedScene" uid="uid://iy8hyu5kklq" path="res://HUD/UI.tscn" id="4_sjlec"]
+[ext_resource type="Script" path="res://Scenes/PauseMenu.gd" id="5_oihru"]
+[ext_resource type="AudioStream" uid="uid://bhq80pnu5ndka" path="res://Assets/game-music-loop-3-144252.mp3" id="6_mt0cc"]
+[ext_resource type="PackedScene" uid="uid://dwuqrj1kmln7w" path="res://HUD/MobileControll.tscn" id="7_c4g8u"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7kmle"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_widxu"]
+sky_material = SubResource("ProceduralSkyMaterial_7kmle")
+
+[sub_resource type="Environment" id="Environment_se3vd"]
+background_mode = 1
+sky = SubResource("Sky_widxu")
+tonemap_mode = 2
+glow_enabled = true
+glow_blend_mode = 1
+adjustment_brightness = 5.11
+
+[sub_resource type="GDScript" id="GDScript_0uy8y"]
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(0.999379, 0, 0, 0, 0.999379, 0, 0, 0, 0.999379, 0, 0, 0)
+script = ExtResource("1_61ckl")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_se3vd")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1.0001, 0.0286356, -0.0150085, -0.0320719, -0.820101, 0.572406, 0.00408015, 0.572588, 0.820591, -0.00358518, 7.40871, 7.7112)
+shadow_enabled = true
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_xde2s")]
+transform = Transform3D(1.00968, 0, 0, 0, 1.00968, 0, 0, 0, 1.00968, 0, 0.696972, 0)
+camera = NodePath("../Camera3D")
+
+[node name="Plane" parent="." instance=ExtResource("1_dew4i")]
+transform = Transform3D(1.00968, 0, 0, 0, 1.00968, 0, 0, 0, 1.00968, 0, 0, 0)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+script = SubResource("GDScript_0uy8y")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1.00062, 0, 0, 0, 0.800077, 0.600933, 0, -0.600933, 0.800077, 0, 3.95529, 4.76583)
+current = true
+
+[node name="UI" parent="." instance=ExtResource("4_sjlec")]
+process_mode = 3
+script = ExtResource("5_oihru")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_mt0cc")
+autoplay = true
+
+[node name="MobileControll" parent="." instance=ExtResource("7_c4g8u")]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

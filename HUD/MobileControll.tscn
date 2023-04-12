@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwuqrj1kmln7w"]
+
+[ext_resource type="Texture2D" uid="uid://cbealj516qsge" path="res://Assets/game_arrow_3919.png" id="1_vsrqb"]
+[ext_resource type="Texture2D" uid="uid://c7f687b2bsk4" path="res://Assets/image.png" id="2_m25k2"]
+
+[node name="MobileControll" type="CanvasLayer"]
+
+[node name="Right" type="TouchScreenButton" parent="."]
+position = Vector2(1049, 256)
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("1_vsrqb")
+action = "ui_right"
+
+[node name="Up" type="TouchScreenButton" parent="."]
+position = Vector2(3, 340)
+rotation = -1.5708
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("1_vsrqb")
+action = "ui_top"
+
+[node name="Down" type="TouchScreenButton" parent="."]
+position = Vector2(106, 407)
+rotation = 1.5708
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("1_vsrqb")
+action = "ui_down"
+
+[node name="Left" type="TouchScreenButton" parent="."]
+position = Vector2(1150, 496)
+rotation = 3.14159
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("1_vsrqb")
+action = "ui_left"
+
+[node name="Restart" type="TouchScreenButton" parent="."]
+process_mode = 3
+position = Vector2(533, 551)
+scale = Vector2(0.05, 0.05)
+texture_normal = ExtResource("2_m25k2")
+action = "restart"
